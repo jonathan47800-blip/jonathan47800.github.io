@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Jonathan Riester</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ["Space Grotesk", "sans-serif"],
+            body: ["Inter", "sans-serif"],
+          },
+          colors: {
+            ink: "#0f172a",
+            primary: "#1d4ed8",
+            primaryDark: "#1e40af",
+            soft: "#eff6ff" /* Correspond à blue-50 de Tailwind */
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(29, 78, 216, 0.1); }
+      50% { box-shadow: 0 0 30px rgba(29, 78, 216, 0.25); }
+    }
+    .animated-frame {
+      animation: pulseGlow 5s ease-in-out infinite;
+    }
+    .card {
+      transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 28px rgba(15, 23, 42, 0.08);
+      border-color: #cbd5e1;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card {
+        transition: none;
+      }
+      .card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+      .reveal {
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-soft text-ink font-body dark:bg-slate-900 dark:text-slate-200">
+  <header class="bg-soft border-b border-slate-200 dark:bg-slate-900 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-6 py-10">
+      <nav class="flex items-center justify-between">
+        <div class="text-xl font-display font-bold tracking-wide">JR</div>
+        <div class="flex items-center gap-4">
+          <div class="hidden md:flex gap-4 text-sm text-slate-600 dark:text-slate-400">
+            <a href="#about" class="hover:text-primary">À propos</a>
+            <a href="#skills" class="hover:text-primary">Compétences</a>
+            <a href="#experience" class="hover:text-primary">Expériences</a>
+            <a href="#projects" class="hover:text-primary">Projets</a>
+            <a href="#contact" class="hover:text-primary">Contact</a>
+          </div>
+          <button id="theme-toggle" class="px-3 py-1.5 text-sm rounded-lg border border-slate-300 text-slate-700 hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300 dark:hover:border-primary dark:hover:text-primary">Thème sombre</button>
+        </div>
+      </nav>
+
+      <div class="mt-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center">
+        <div class="reveal">
+          <p class="text-primary font-semibold">Curriculum Vitae</p>
+          <h1 class="mt-3 text-4xl sm:text-5xl font-display font-bold">Jonathan Riester</h1>
+          <p class="mt-3 text-lg text-slate-600 dark:text-slate-400">Agent de Maintenance & Assistant de Vie aux Familles</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contact" class="px-5 py-2 bg-primary text-white font-semibold rounded-lg hover:bg-primaryDark dark:hover:bg-blue-600">Me contacter</a>
+            <a href="#projects" class="px-5 py-2 border border-slate-300 rounded-lg text-slate-700 hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300 dark:hover:border-primary dark:hover:text-primary">Voir les projets</a>
+          </div>
+        </div>
+        <div class="flex justify-center reveal">
+          <img class="w-48 h-48 rounded-2xl object-cover ring-4 ring-primary/20" src="assets/moi.jpg" alt="Portrait professionnel" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-12 space-y-14">
+    <section id="about" class="animated-frame grid gap-6 lg:grid-cols-2 items-start reveal border border-blue-100/70 rounded-2xl p-6 dark:border-blue-900/50">
+      <div>
+        <h2 class="text-2xl font-display font-bold">À propos</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-400">
+          Professionnel polyvalent avec une solide expérience en maintenance, entretien et services à la personne.
+          J'apprécie le travail rigoureux, l'autonomie et le contact humain.
+        </p>
+      </div>
+      <div class="card reveal stagger bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+        <h3 class="font-semibold">Centres d'intérêt</h3>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="px-3 py-1 text-sm bg-slate-100 rounded-full dark:bg-slate-700">Histoire</span>
+          <span class="px-3 py-1 text-sm bg-slate-100 rounded-full dark:bg-slate-700">Culture japonaise</span>
+          <span class="px-3 py-1 text-sm bg-slate-100 rounded-full dark:bg-slate-700">Jeux vidéo</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="animated-frame reveal border border-blue-100/70 rounded-2xl p-6 dark:border-blue-900/50">
+      <h2 class="text-2xl font-display font-bold">Expériences professionnelles</h2>
+      <div class="mt-6 grid gap-6 lg:grid-cols-2">
+        <div class="card reveal stagger bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+          <p class="text-sm text-slate-500 dark:text-slate-400">02/2021 – 06/2025</p>
+          <h3 class="mt-1 text-lg font-semibold">Agent d’entretien</h3>
+          <p class="text-slate-600 dark:text-slate-400">Département du Lot et Garonne (ATTEE)</p>
+        </div>
+        <div class="card reveal stagger bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+          <p class="text-sm text-slate-500 dark:text-slate-400">01/2020</p>
+          <h3 class="mt-1 text-lg font-semibold">Formation</h3>
+          <p class="text-slate-600 dark:text-slate-400">Diplôme d’Assistant De Vie aux Familles (ADES)</p>
+        </div>
+        <div class="card reveal stagger bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+          <p class="text-sm text-slate-500 dark:text-slate-400">12/01/2026 – 31/07/2026</p>
+          <h3 class="mt-1 text-lg font-semibold">Formation Technicien Réseaux & IP</h3>
+          <p class="text-slate-600 dark:text-slate-400">Centre de formation C2RT — parcours orienté réseaux, adressage IP et maintenance.</p>
+        </div>
+        <div class="card reveal stagger bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+          <p class="text-sm text-slate-500 dark:text-slate-400">05/2016 – 01/2017</p>
+          <h3 class="mt-1 text-lg font-semibold">Agent technique / maintenance</h3>
+          <ul class="mt-2 list-disc list-inside text-slate-600 dark:text-slate-400">
+            <li>Maintenance multifonction : mise à neuf local, peinture, ponçage menuiserie bois</li>
+            <li>Espaces verts : tonte pelouse, taille</li>
+          </ul>
+        </div>
+        <div class="card reveal stagger bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+          <p class="text-sm text-slate-500 dark:text-slate-400">10/2012 – 02/2015</p>
+          <h3 class="mt-1 text-lg font-semibold">Agent manutentionnaire</h3>
+          <p class="text-slate-600 dark:text-slate-400">Soudeur de cadre PVC, réparateur de palettes Europe.</p>
+        </div>
+        <div class="card reveal stagger bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+          <p class="text-sm text-slate-500 dark:text-slate-400">06/2006 – 09/2011</p>
+          <h3 class="mt-1 text-lg font-semibold">Pizzaiolo</h3>
+          <p class="text-slate-600 dark:text-slate-400">Préparation de pizzas, mise en place pour le service, préparation de commandes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="animated-frame reveal border border-blue-100/70 rounded-2xl p-6 dark:border-blue-900/50">
+      <h2 class="text-2xl font-display font-bold">Compétences</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        <div class="card reveal stagger bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+          <h3 class="font-semibold">Savoir-être</h3>
+          <ul class="mt-3 list-disc list-inside text-slate-600 dark:text-slate-400">
+            <li>Respect & discrétion</li>
+            <li>Curiosité & autonomie</li>
+            <li>Tolérance & polyvalence</li>
+          </ul>
+        </div>
+        <div class="card reveal stagger bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+          <h3 class="font-semibold">Savoir-faire</h3>
+          <ul class="mt-3 list-disc list-inside text-slate-600 dark:text-slate-400">
+            <li>Entretien & maintenance</li>
+            <li>Organisation & planification</li>
+            <li>Accompagnement des personnes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="animated-frame reveal border border-blue-100/70 rounded-2xl p-6 dark:border-blue-900/50">
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="text-2xl font-display font-bold">Projets</h2>
+      </div>
+      <div class="card reveal stagger mt-6 bg-slate-50 rounded-2xl p-6 shadow-sm border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+        <h3 class="text-lg font-semibold">Technicien Réseau & IP</h3>
+        <p class="mt-2 text-slate-600 dark:text-slate-400">Interventions sur l’infrastructure réseau, configuration IP et assistance technique pour garantir la continuité de service.</p>
+        <a class="mt-3 inline-block text-primary font-semibold dark:text-blue-400" href="https://github.com/" target="_blank" rel="noreferrer">Voir un exemple</a>
+      </div>
+    </section>
+
+    <section id="contact" class="animated-frame bg-slate-900 text-white rounded-2xl p-8 reveal border border-blue-100/70 dark:bg-slate-800 dark:border-blue-900/50">
+      <h2 class="text-2xl font-display font-bold">Contact</h2>
+      <p class="mt-2 text-slate-300 dark:text-slate-400">Besoin d'un profil polyvalent ? Discutons-en.</p>
+      <div class="mt-4 grid gap-2 text-slate-200 dark:text-slate-300">
+        <p>Email : <a class="text-white underline dark:text-blue-400" href="mailto:jonathan.47800@hotmail.fr">jonathan.47800@hotmail.fr</a></p>
+        <p>Téléphone : 07 83 03 03 60</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm text-slate-500 pb-8 dark:text-slate-400">© 2026 Jonathan Riester</footer>
+
+  <script>
+    const reveals = document.querySelectorAll(".reveal");
+    const staggers = document.querySelectorAll(".stagger");
+    staggers.forEach((el, i) => { el.style.transitionDelay = `${i * 60}ms`; });
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      reveals.forEach((el) => observer.observe(el));
+    } else {
+      reveals.forEach((el) => el.classList.add("in-view"));
+    }
+
+    const themeToggle = document.getElementById("theme-toggle");
+    const htmlEl = document.documentElement;
+
+    themeToggle.addEventListener("click", () => {
+      htmlEl.classList.toggle("dark");
+      if (htmlEl.classList.contains("dark")) {
+        themeToggle.textContent = "Thème clair";
+      } else {
+        themeToggle.textContent = "Thème sombre";
+      }
+    });
+  </script>
+</body>
+</html>
